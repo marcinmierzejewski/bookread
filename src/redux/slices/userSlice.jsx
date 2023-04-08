@@ -3,8 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   email: "",
   id: "",
-  cards: [],
-  challengeFIlter: false
+  goingToRead: [],
+  currentlyReading: [],
+  finishedReading: [],
 };
 
 const userSlice = createSlice({
@@ -13,10 +14,9 @@ const userSlice = createSlice({
   reducers: {
     addUser: (state, { payload }) => payload,
     deleteUser: (state, { payload }) => initialState,
-    challengeToggle: (state, { payload }) => { state.challengeFIlter = !state.challengeFIlter }
   },
 });
 
-export const { addUser, deleteUser, challengeToggle } = userSlice.actions;
+export const { addUser, deleteUser } = userSlice.actions;
 
 export default userSlice.reducer;

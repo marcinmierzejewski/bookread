@@ -1,7 +1,11 @@
+import { RegisterForm } from "../../components/RegisterForm/RegisterForm";
+import { LoginForm } from "../../components/LoginForm/LoginForm";
+
 const LandingPage = () => {
   return (
     <>
-      Landing
+      <RegisterForm />
+      <LoginForm />
     </>
   );
 };

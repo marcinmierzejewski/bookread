@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const bookApi = createApi({
   reducerPath: "questifyApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://questify-api.onrender.com",
+    baseUrl: "https://bookread-backend.goit.global",
     prepareHeaders: (headers, { getState }) => {
       const token = getState().token;
       if (token) {
@@ -12,7 +12,7 @@ export const bookApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Auth", "Card"],
+  tagTypes: ["Auth", "Books"],
   endpoints: (builder) => ({
     register: builder.mutation({
       query: (newUserData) => ({
