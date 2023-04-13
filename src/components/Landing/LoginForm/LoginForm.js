@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
-import { useLoginMutation } from "../../redux/slices/bookApi";
+import { useLoginMutation } from "../../../redux/slices/bookApi";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addToken } from "../../redux/slices/tokenSlice";
-import { addUser } from "../../redux/slices/userSlice";
+import { addToken } from "../../../redux/slices/tokenSlice";
+import { addUser } from "../../../redux/slices/userSlice";
 import styles from "./LoginForm.module.css";
 
 export const LoginForm = () => {

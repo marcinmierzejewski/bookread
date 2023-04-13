@@ -1,13 +1,7 @@
-import { RegisterForm } from "../../components/RegisterForm/RegisterForm";
-import { LoginForm } from "../../components/LoginForm/LoginForm";
+import { LandingBox } from "../../components/Landing/LandingBox/LandingBox";
 
 const LandingPage = () => {
-  return (
-    <>
-      <RegisterForm />
-      <LoginForm />
-    </>
-  );
+  return <LandingBox />;
 };
 
 export default LandingPage;

@@ -1,5 +1,4 @@
-import { useDispatch } from 'react-redux';
-import { useRegisterMutation } from '../../redux/slices/bookApi';
+import { useRegisterMutation } from '../../../redux/slices/bookApi';
 import styles from './RegisterForm.module.css';
 
 export const RegisterForm = () => {

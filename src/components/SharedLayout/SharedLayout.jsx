@@ -1,17 +1,12 @@
-import { Suspense, useState } from "react";
-import { useSelector } from "react-redux";
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { Loader } from "../Loader/Loader";
-
+import { AppBar } from "../AppBar/AppBar/AppBar";
 
 export const SharedLayout = () => {
-  const user = useSelector((state) => state.user);
-
   return (
     <>
-      <div>
-        nawigacja {user.name}
-      </div>
+      <AppBar />
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>      
