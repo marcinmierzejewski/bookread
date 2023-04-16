@@ -3,7 +3,7 @@ import { LoginForm } from "../LoginForm/LoginForm";
 import { LoginContent } from "../LoginContent/LoginContent";
 import { RegisterForm } from "../RegisterForm/RegisterForm";
 import { RegisterContent } from "../RegisterContent/RegisterContent";
-import { LandingWrapper, LandingFormBox, ContentBox, LoginBtnSwitch } from "./LandingBox.styled";
+import { LandingWrapper, LandingFormBox, ContentBox, LoginBtnSwitch, RegisterSwitch } from "./LandingBox.styled";
 
 import ReactCardFlip from "react-card-flip";
 
@@ -20,7 +20,7 @@ export const LandingBox = () => {
           </div>
           <div>
             <RegisterForm />
-            <button onClick={() => setIsFlipped(false)}>Login</button>
+            <RegisterSwitch>Already have an account?<button onClick={() => setIsFlipped(false)}>Log in</button></RegisterSwitch>
           </div>
         </ReactCardFlip>
       </LandingFormBox>

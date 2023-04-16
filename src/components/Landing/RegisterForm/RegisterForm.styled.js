@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Form = styled.form`
   display: block;
-  max-width: 400px;  
+  max-width: 400px;
   margin: 0 auto;
   padding-inline: 25px;
   padding-top: 30px;
@@ -48,7 +48,7 @@ export const InputForm = styled.input`
     border: 2px solid var(--color-accent);
   }
 `;
-export const LoginBtn = styled.button`
+export const RegisterBtn = styled.button`
   border: none;
   display: block;
   margin: 0 auto;
