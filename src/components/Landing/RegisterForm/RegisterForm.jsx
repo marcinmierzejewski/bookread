@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../../../redux/slices/bookApi";
-import { Form, LabelForm, InputForm, RegisterBtn } from "./RegisterForm.styled";
+import { Form, LabelForm, InputForm, RegisterBtn, NotificationBox } from "./RegisterForm.styled";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const RegisterForm = () => {
   const [register] = useRegisterMutation();
   const [isConfirmPassword, setIsConfirmPassword] = useState(true);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,10 +26,13 @@ export const RegisterForm = () => {
       await register({ name, email, password })
         .unwrap()
         .then(() => {
-          console.log("ok");
+          toast.success("Now you can use your credentials to login");
+          setTimeout(() => {
+            navigate("/", { replace: true });
+          }, 3000);
         })
         .catch(() => {
-          console.log("already use");
+          toast.warn(`User with ${email} already exists`);
         });
       form.reset();
     }
@@ -65,6 +72,7 @@ export const RegisterForm = () => {
         />
       </LabelForm>
       <RegisterBtn type="submit">Register</RegisterBtn>
+      <NotificationBox />
     </Form>
   );
 };
