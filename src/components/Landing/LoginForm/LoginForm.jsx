@@ -1,11 +1,12 @@
-import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { useLoginMutation } from "../../../redux/slices/bookApi";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToken } from "../../../redux/slices/tokenSlice";
 import { addUser } from "../../../redux/slices/userSlice";
-import styles from "./LoginForm.module.css";
+import { Form, LabelForm, InputForm, LoginBtn, NotificationBox } from "./LoginForm.styled";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'; 
 
 export const LoginForm = () => {
   const [login] = useLoginMutation();
@@ -49,21 +50,20 @@ export const LoginForm = () => {
     }
   };
 
-  const { form, label, input, logBtn } = styles;
-
   return (
-    <form className={form} onSubmit={handleSubmit} autoComplete="off">
-      <label className={label}>
-        Email
-        <input className={input} type="email" name="email" />
-      </label>
-      <label className={label}>
-        Password
-        <input className={input} type="password" name="password" />
-      </label>
-      <button className={logBtn} type="submit">
-        Log In
-      </button>
-    </form>
+    <Form onSubmit={handleSubmit} autoComplete="off">
+      <LabelForm>
+        Email<span>*</span>
+        <InputForm type="email" name="email" placeholder="your@email.com" />
+      </LabelForm>
+      <LabelForm>
+        Password<span>*</span>
+        <InputForm type="password" name="password" placeholder="Password" />
+      </LabelForm>
+      <LoginBtn type="submit">
+        Login
+      </LoginBtn>
+      <NotificationBox />
+    </Form>
   );
 };

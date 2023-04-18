@@ -2,24 +2,33 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
 :root {
-  --font-montserrat: 'Montserrat', sans-serif;
-  --font-abril: 'Abril Fatface', cursive;
-  --color-main: #242A37;
-  --color-accent: #FF6B08;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-abril: "Abril Fatface", cursive;
+  --color-main: #242a37;
+  --color-accent: #ff6b08;
   --color-hover: #f87d2b;
-  --color-grey: #A6ABB9;
+  --color-grey: #a6abb9;
 }
 
-body {
+body,
+p,
+ul,
+li,
+h2 {
   margin: 0;
   padding: 0;
   font-family: var(--font-montserrat);
   color: var(--color-main);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;  
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+ul,
+li {
+  list-style: none;
 }
