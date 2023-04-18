@@ -1,11 +1,12 @@
-import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { useLoginMutation } from "../../../redux/slices/bookApi";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToken } from "../../../redux/slices/tokenSlice";
 import { addUser } from "../../../redux/slices/userSlice";
-import { Form, LabelForm, InputForm, LoginBtn } from "./LoginForm.styled"; 
+import { Form, LabelForm, InputForm, LoginBtn, NotificationBox } from "./LoginForm.styled";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'; 
 
 export const LoginForm = () => {
   const [login] = useLoginMutation();
@@ -62,6 +63,7 @@ export const LoginForm = () => {
       <LoginBtn type="submit">
         Login
       </LoginBtn>
+      <NotificationBox />
     </Form>
   );
 };

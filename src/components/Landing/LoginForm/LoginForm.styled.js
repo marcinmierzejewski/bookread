@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ToastContainer } from "react-toastify";
 
 export const Form = styled.form`
   display: block;
@@ -73,5 +74,18 @@ export const LoginBtn = styled.button`
   &:hover {
     background-color: var(--color-hover);
     color: #ffffff;
+  }
+`;
+
+export const NotificationBox = styled(ToastContainer)`
+  &&&.Toastify__toast-container {
+    max-width: 100%;
+  }
+  .Toastify__toast {
+  }
+  .Toastify__toast-body {
+  }
+  .Toastify__progress-bar {
+    background: var(--color-hover);
   }
 `;

@@ -13,7 +13,7 @@ export const LandingWrapper = styled.div`
 `;
 export const LandingFormBox = styled.div`
   flex-grow: 1;
-  min-width: 50%;
+  min-width: 40%;
   background-image: linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
     url(${bgImage});
   background-size: cover;
