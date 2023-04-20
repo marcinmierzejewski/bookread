@@ -24,6 +24,7 @@ export const LabelForm = styled.label`
   font-weight: 600;
   font-size: 14px;
   line-height: 38px;
+  position: relative;
   > span {
     color: var(--color-accent);
     margin-left: 5px;
@@ -76,6 +77,21 @@ export const RegisterBtn = styled.button`
     color: #ffffff;
   }
 `;
+
+export const PasswordVisibility = styled.button`
+  position: absolute;
+  top: 53px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  > svg {
+    color: var(--color-grey);
+    width: 20px;
+    height: auto;
+  }
+`
 
 export const NotificationBox = styled(ToastContainer)`
   &&&.Toastify__toast-container {
