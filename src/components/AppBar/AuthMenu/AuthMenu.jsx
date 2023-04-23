@@ -5,7 +5,13 @@ import { useLogoutMutation } from "../../../redux/slices/bookApi";
 import { deleteToken } from "../../../redux/slices/tokenSlice";
 import { deleteUser } from "../../../redux/slices/userSlice";
 import { BsBookHalf, BsHouseDoor } from "react-icons/bs";
-import { AuthMenuBox, Link, IconBox, Letter, LogoutButton } from "./AuthMenu.styled";
+import {
+  AuthMenuBox,
+  Link,
+  IconBox,
+  Letter,
+  LogoutButton,
+} from "./AuthMenu.styled";
 
 export const AuthMenu = () => {
   const user = useSelector((state) => state.user);
@@ -21,7 +27,7 @@ export const AuthMenu = () => {
       dispatch(deleteToken());
     });
     await navigate("/");
-  }
+  };
 
   return (
     <AuthMenuBox>
