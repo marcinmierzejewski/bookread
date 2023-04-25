@@ -13,7 +13,7 @@ export const AppBarBox = styled.header`
 export const Logo = styled.div`
   font-family: var(--font-abril);
   font-size: 20px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   text-align: ${(props) => (props.isUserLogin ? "left" : "center")};
   @media screen and (min-width: 480px) {
     text-align: left;

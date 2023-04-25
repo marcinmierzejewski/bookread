@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { AuthMenu } from "../AuthMenu/AuthMenu";
+import { UserName } from "../UserName/UserName";
 import { AppBarBox, Logo } from "./AppBar.styled";
 
 export const AppBar = () => {
@@ -9,6 +10,7 @@ export const AppBar = () => {
   return (
     <AppBarBox>
       <Logo isUserLogin={isUserLogin}>BR</Logo>
+      {isUserLogin && <UserName />}
       {isUserLogin && <AuthMenu />}
     </AppBarBox>
   );

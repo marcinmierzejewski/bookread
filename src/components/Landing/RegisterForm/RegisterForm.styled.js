@@ -59,7 +59,6 @@ export const RegisterBtn = styled.button`
   margin-top: 30px;
   border-radius: 3px;
   cursor: pointer;
-  box-shadow: 2px 2px 5px rgb(97, 92, 92);
   transition: all 250ms linear;
   font-weight: 600;
   font-size: 16px;
@@ -68,8 +67,6 @@ export const RegisterBtn = styled.button`
   color: #ffffff;
 
   &:active {
-    transform: translate(2px, 2px);
-    box-shadow: 0px 0px 3px rgb(97, 92, 92);
     background-color: var(--color-accent);
   }
   &:hover {

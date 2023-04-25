@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 export const AuthMenuBox = styled.div`
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 `;
 
 export const Link = styled(NavLink)`
@@ -61,6 +62,9 @@ export const IconBox = styled.div`
   > a:last-child {
     position: relative;
     margin-right: 37px;
+    @media screen and (min-width: 768px) {
+      margin-right: 19px;
+  }
     &::after {
       content: "";
       display: block;
@@ -69,7 +73,7 @@ export const IconBox = styled.div`
       right: -14px;
       width: 1px;
       height: 33px;
-      background-color: #f5f7fa;
+      background-color: #E0E5EB;
       z-index: 5;
       pointer-events: none;
     }
@@ -94,6 +98,9 @@ export const Letter = styled.span`
     border-radius: 50%;
     background-color: #f5f7fa;
     z-index: -1;
+  }
+  @media screen and (min-width: 768px) {
+    display: none;
   }
 `;
 
