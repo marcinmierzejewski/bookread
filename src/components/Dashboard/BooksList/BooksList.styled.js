@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const BooksListBox = styled.ul`
+
   :not(:last-child) {
     margin-bottom: 30px;
   }
-`
+`;
 
 export const BookListTitle = styled.p`
   font-weight: 600;
@@ -13,7 +14,10 @@ export const BookListTitle = styled.p`
 `;
 
 export const FirstLine = styled.ul`
-  display: flex;
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
   > li {
     font-weight: 500;
     font-size: 14px;

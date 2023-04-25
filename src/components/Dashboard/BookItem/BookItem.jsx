@@ -7,11 +7,13 @@ export const BookItem = ({ id, title, author, year, pages, color }) => {
   return (
     <BookItemBox color={color}>
       <p>
-        <BsBookHalf /> {title}
+        <span>
+          <BsBookHalf />
+        </span> {title}
       </p>
-      <p>{author}</p>
-      <p>{year}</p>
-      <p>{pages}</p>
+      <p><span>Author: </span>{author}</p>
+      <p><span>Year: </span>{year}</p>
+      <p><span>Pages: </span>{pages}</p>
     </BookItemBox>
   );
 };
