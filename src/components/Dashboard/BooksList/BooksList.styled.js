@@ -11,6 +11,13 @@ export const BookListTitle = styled.p`
   font-weight: 600;
   font-size: 19px;
   line-height: 38px;
+  text-align: center;
+  @media screen and (min-width: 768px) {
+    text-align: left;
+  }
+  @media screen and (max-width: 768px) {
+    margin-right: 140px;
+  }
 `;
 
 export const FirstLine = styled.ul`
