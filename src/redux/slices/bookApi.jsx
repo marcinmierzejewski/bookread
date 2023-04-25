@@ -68,10 +68,10 @@ export const bookApi = createApi({
     //   }),
     //   invalidatesTags: ["Card"],
     // }),
-    // getAllUserCard: builder.query({
-    //   query: () => "/card",
-    //   providesTags: ["Auth", "Card"],
-    // }),
+    getAllUserBooks: builder.query({
+      query: () => "/user/books",
+      providesTags: ["Auth", "Books"],
+    }),
     // completeCard: builder.mutation({
     //   query: (id) => ({
     //     url: `/card/complete/${id}`,
@@ -90,6 +90,6 @@ export const {
 	// useCreateCardMutation,
 	// useEditCardMutation,
 	// useDeleteCardMutation,
-	// useGetAllUserCardQuery,
+	useGetAllUserBooksQuery,
 	// useCompleteCardMutation,
 } = bookApi;

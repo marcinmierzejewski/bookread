@@ -1,0 +1,61 @@
+
+{
+  "name": "Test",
+  "email": "user@example.com",
+  "goingToRead": [
+    {
+      "title": "The Book of Five Rings",
+      "author": "Miyamoto Musashi",
+      "publishYear": 1643,
+      "totalPages": 110,
+      "pagesFinished": 110,
+      "_id": "507f1f77bcf86cd799439013",
+      "__v": 0
+    },
+    {
+      "title": "The Book ",
+      "author": "Miyamoto",
+      "publishYear": 1843,
+      "totalPages": 130,
+      "pagesFinished": 110,
+      "_id": "507f1f77bcf86cd7994390u3",
+      "__v": 0
+    }
+  ],
+  "currentlyReading": [{
+    "title": "The Book of Five Rings",
+    "author": "Miyamoto Musashi",
+    "publishYear": 1643,
+    "totalPages": 110,
+    "pagesFinished": 110,
+    "_id": "507f1f77bcf86cd799439013",
+    "__v": 0
+  },
+  {
+    "title": "The Book ",
+    "author": "Miyamoto",
+    "publishYear": 1843,
+    "totalPages": 130,
+    "pagesFinished": 110,
+    "_id": "507f1f77bcf86cd7994390u3",
+    "__v": 0
+  }],
+  "finishedReading": [{
+    "title": "The Book of Five Rings",
+    "author": "Miyamoto Musashi",
+    "publishYear": 1643,
+    "totalPages": 110,
+    "pagesFinished": 110,
+    "_id": "507f1f77bcf86cd799439013",
+    "__v": 0
+  },
+  {
+    "title": "The Book ",
+    "author": "Miyamoto",
+    "publishYear": 1843,
+    "totalPages": 130,
+    "pagesFinished": 110,
+    "_id": "507f1f77bcf86cd7994390u3",
+    "__v": 0
+  }]
+}
