@@ -1,12 +1,8 @@
 import styled from "styled-components";
 
 export const SectionBox = styled.section`
-  padding-top: 50px;
-  padding-bottom: 50px;
-  @media screen and (min-width: 768px) {
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
+  padding-top: 30px;
+  padding-bottom: 30px;
 `;
 
 export const Wrapper = styled.div`

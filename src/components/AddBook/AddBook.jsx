@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAddBookMutation } from "../../redux/slices/bookApi";
+import { AddForm, TitleBox, BookItem, AddBookBtn } from "./AddBook.styled";
 
 export const AddBook = () => {
   const [title, setTitle] = useState("");
@@ -48,27 +49,27 @@ export const AddBook = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <div>
+      <AddForm onSubmit={handleSubmit} autoComplete="off">
+        <TitleBox>
           <label>
             Book title
             <input
               type="text"
               name="title"
               required
-              placeholder="Username"
+              placeholder="..."
               onChange={inputChange}
             />
           </label>
-        </div>
-        <div>
+        </TitleBox>
+        <BookItem>
           <label>
             Author
             <input
               type="text"
               name="author"
               required
-              placeholder="Username"
+              placeholder="..."
               onChange={inputChange}
             />
           </label>
@@ -78,7 +79,7 @@ export const AddBook = () => {
               type="number"
               name="date"
               required
-              placeholder="Username"
+              placeholder="..."
               onChange={inputChange}
             />
           </label>
@@ -88,13 +89,13 @@ export const AddBook = () => {
               type="number"
               name="pages"
               required
-              placeholder="Username"
+              placeholder="..."
               onChange={inputChange}
             />
           </label>
-        </div>
-        <button type="submit">Add</button>
-      </form>
+        </BookItem>
+        <AddBookBtn type="submit">Add</AddBookBtn>
+      </AddForm>
     </>
   );
 };
