@@ -48,4 +48,7 @@ export const FirstLine = styled.ul`
     flex-grow: 1;
     width: 10%;
   }
+  > li:nth-child(5) {
+    width: 300px;
+  }
 `;
