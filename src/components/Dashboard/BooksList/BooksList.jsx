@@ -1,5 +1,5 @@
-import { useGetAllUserBooksQuery } from "../../../redux/slices/bookApi";
-import { Loader } from "../../Loader/Loader";
+// import { useGetAllUserBooksQuery } from "../../../redux/slices/bookApi";
+// import { Loader } from "../../Loader/Loader";
 import { BookItem } from "../BookItem/BookItem";
 import testData from "./testData.json";
 import { BooksListBox, BookListTitle, FirstLine } from "./BooksList.styled";
