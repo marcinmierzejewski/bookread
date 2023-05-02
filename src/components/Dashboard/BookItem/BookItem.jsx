@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ResumeModal } from "../ResumeModal/ResumeModal";
 import { BsBookHalf } from "react-icons/bs";
 import { Rating } from "react-simple-star-rating";
 import { ResumeBox, BookItemBox } from "./BookItem.styled";
@@ -14,12 +15,7 @@ export const BookItem = ({
   isResume,
 }) => {
   // const [deleteContact] = useDeleteContactMutation();
-
-  const [ratingValue, setRatingValue] = useState(0);
-
-  const handleRating = (rate) => {
-    setRatingValue(rate);
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <BookItemBox color={color} isResume={isResume}>
@@ -40,13 +36,19 @@ export const BookItem = ({
       <p>
         <span>Pages: </span>
         {pages}
-      </p>      
+      </p>
       <ResumeBox isResume={isResume}>
         <p>
           <span>Rating: </span>
-          <Rating initialValue={rating} readonly={true} size={24} />
+          <Rating
+            initialValue={rating}
+            readonly={true}
+            size={24}
+            fillColor="var(--color-accent)"
+          />
         </p>
-        <button>Resume</button>
+        <button onClick={() => setIsOpen(true)}>Resume</button>
+        <ResumeModal isOpen={isOpen} setIsOpen={setIsOpen} />
       </ResumeBox>
     </BookItemBox>
   );
