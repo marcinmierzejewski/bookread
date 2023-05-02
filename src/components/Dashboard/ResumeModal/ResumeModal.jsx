@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { ModalOverlay, Modal, FormResume } from "./ResumeModal.styled";
 import { Rating } from "react-simple-star-rating";
+import { useReviewBookMutation } from "../../../redux/slices/bookApi";
 
-export const ResumeModal = ({ isOpen, setIsOpen }) => {
+export const ResumeModal = ({ isOpen, setIsOpen, bookId }) => {
   //press escape to close modal
   useEffect(() => {
     const close = (e) => {
@@ -19,6 +20,7 @@ export const ResumeModal = ({ isOpen, setIsOpen }) => {
 
   const [resume, setResume] = useState("");
   const [ratingValue, setRatingValue] = useState(0);
+  const [resumeBook] = useReviewBookMutation();
 
   const handleRating = (rate) => {
     setRatingValue(rate);
@@ -37,6 +39,14 @@ export const ResumeModal = ({ isOpen, setIsOpen }) => {
   const handleResume = async (e) => {
     e.preventDefault();
     console.log(resume, ratingValue);
+    const payload = {
+      body: {
+        rating: ratingValue,
+        feedback: resume,
+      },
+      id: bookId,
+    }
+    resumeBook(payload);
     resetResume();
   };
 

@@ -53,21 +53,21 @@ export const bookApi = createApi({
       }),
       invalidatesTags: ["Auth", "Books"],
     }),
-    // editCard: builder.mutation({
-    //   query: (cardData) => ({
-    //     url: `/card/${cardData.id}`,
-    //     method: "PATCH",
-    //     body: cardData.body,
-    //   }),
-    //   invalidatesTags: ["Auth", "Card"],
-    // }),
-    // deleteCard: builder.mutation({
-    //   query: (id) => ({
-    //     url: `/card/${id}`,
-    //     method: "DELETE",
-    //   }),
-    //   invalidatesTags: ["Card"],
-    // }),
+    reviewBook: builder.mutation({
+      query: (bookData) => ({
+        url: `/book/review/${bookData.id}`,
+        method: "PATCH",
+        body: bookData.body,
+      }),
+      invalidatesTags: ["Auth", "Books"],
+    }),
+    deleteBook: builder.mutation({
+      query: (id) => ({
+        url: `/book/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Books"],
+    }),
     getAllUserBooks: builder.query({
       query: () => "/user/books",
       providesTags: ["Auth", "Books"],
@@ -88,8 +88,8 @@ export const {
 	useLogoutMutation,
 	// useRefreshMutation,
 	useAddBookMutation,
-	// useEditCardMutation,
-	// useDeleteCardMutation,
+	useReviewBookMutation,
+	useDeleteBookMutation,
 	useGetAllUserBooksQuery,
 	// useCompleteCardMutation,
 } = bookApi;

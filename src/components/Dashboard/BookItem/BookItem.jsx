@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { ResumeModal } from "../ResumeModal/ResumeModal";
+import { ConfirmCancelModal } from "../../ConfirmCancelModal/ConfirmCancelModal";
 import { BsBookHalf } from "react-icons/bs";
 import { Rating } from "react-simple-star-rating";
 import { ResumeBox, BookItemBox } from "./BookItem.styled";
+import { useDeleteBookMutation } from "../../../redux/slices/bookApi";
 
 export const BookItem = ({
-  id,
+  bookId,
   title,
   author,
   year,
@@ -14,12 +16,13 @@ export const BookItem = ({
   color,
   isResume,
 }) => {
-  // const [deleteContact] = useDeleteContactMutation();
+  const [deleteBook] = useDeleteBookMutation();
   const [isOpen, setIsOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   return (
-    <BookItemBox color={color} isResume={isResume}>
-      <p>
+    <BookItemBox color={color} isResume={isResume} >
+      <p onClick={()=>setIsDeleteOpen(true)}>
         <span>
           <BsBookHalf />
         </span>{" "}
@@ -48,8 +51,15 @@ export const BookItem = ({
           />
         </p>
         <button onClick={() => setIsOpen(true)}>Resume</button>
-        <ResumeModal isOpen={isOpen} setIsOpen={setIsOpen} />
+        <ResumeModal isOpen={isOpen} setIsOpen={setIsOpen} bookId={bookId}/>
       </ResumeBox>
+      <ConfirmCancelModal
+        isDeleteOpen={isDeleteOpen}
+        modalContent={`Delete ${title}?`}
+        nameOfConfirm="Delete"
+        setIsDeleteOpen={setIsDeleteOpen}
+        confirmingModalAction={() => deleteBook(bookId)}
+       />
     </BookItemBox>
   );
 };

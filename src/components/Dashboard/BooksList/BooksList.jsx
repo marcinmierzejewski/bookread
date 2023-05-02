@@ -34,6 +34,7 @@ export const BooksList = () => {
             ({ _id, title, author, publishYear, pagesTotal, rating=0 }) => (
               <BookItem
                 key={_id}
+                bookId={_id}
                 title={title}
                 author={author}
                 year={publishYear}
