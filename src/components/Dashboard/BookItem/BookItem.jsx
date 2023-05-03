@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { ResumeModal } from "../ResumeModal/ResumeModal";
+import { ConfirmCancelModal } from "../../ConfirmCancelModal/ConfirmCancelModal";
 import { BsBookHalf } from "react-icons/bs";
 import { Rating } from "react-simple-star-rating";
 import { ResumeBox, BookItemBox } from "./BookItem.styled";
+import { useDeleteBookMutation } from "../../../redux/slices/bookApi";
 
 export const BookItem = ({
-  id,
+  bookId,
   title,
   author,
   year,
@@ -13,17 +16,13 @@ export const BookItem = ({
   color,
   isResume,
 }) => {
-  // const [deleteContact] = useDeleteContactMutation();
-
-  const [ratingValue, setRatingValue] = useState(0);
-
-  const handleRating = (rate) => {
-    setRatingValue(rate);
-  };
+  const [deleteBook] = useDeleteBookMutation();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   return (
-    <BookItemBox color={color} isResume={isResume}>
-      <p>
+    <BookItemBox color={color} isResume={isResume} >
+      <p onClick={()=>setIsDeleteOpen(true)}>
         <span>
           <BsBookHalf />
         </span>{" "}
@@ -40,14 +39,27 @@ export const BookItem = ({
       <p>
         <span>Pages: </span>
         {pages}
-      </p>      
+      </p>
       <ResumeBox isResume={isResume}>
         <p>
           <span>Rating: </span>
-          <Rating initialValue={rating} readonly={true} size={24} />
+          <Rating
+            initialValue={rating}
+            readonly={true}
+            size={24}
+            fillColor="var(--color-accent)"
+          />
         </p>
-        <button>Resume</button>
+        <button onClick={() => setIsOpen(true)}>Resume</button>
+        <ResumeModal isOpen={isOpen} setIsOpen={setIsOpen} bookId={bookId}/>
       </ResumeBox>
+      <ConfirmCancelModal
+        isDeleteOpen={isDeleteOpen}
+        modalContent={`Delete ${title}?`}
+        nameOfConfirm="Delete"
+        setIsDeleteOpen={setIsDeleteOpen}
+        confirmingModalAction={() => deleteBook(bookId)}
+       />
     </BookItemBox>
   );
 };

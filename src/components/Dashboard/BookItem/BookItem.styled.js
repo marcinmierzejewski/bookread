@@ -29,6 +29,7 @@ export const BookItemBox = styled.li`
   line-height: 38px;
   background: #ffffff;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  position: relative;
   @media screen and (min-width: 768px) {
     min-height: 62px;
     width: 100%;
