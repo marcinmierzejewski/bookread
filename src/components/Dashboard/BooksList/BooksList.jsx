@@ -18,7 +18,7 @@ export const BooksList = () => {
     isLoading,
     isSuccess,
     isError,
-    error,
+    // error,
   } = useGetAllUserBooksQuery();
 
   const [logout] = useLogoutMutation();
