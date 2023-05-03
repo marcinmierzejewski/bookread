@@ -56,6 +56,7 @@ export const AddBook = () => {
             <input
               type="text"
               name="title"
+              value={title}
               required
               placeholder="..."
               onChange={inputChange}
@@ -68,6 +69,7 @@ export const AddBook = () => {
             <input
               type="text"
               name="author"
+              value={author}
               required
               placeholder="..."
               onChange={inputChange}
@@ -78,6 +80,7 @@ export const AddBook = () => {
             <input
               type="number"
               name="date"
+              value={publishYear}
               required
               placeholder="..."
               onChange={inputChange}
@@ -88,6 +91,7 @@ export const AddBook = () => {
             <input
               type="number"
               name="pages"
+              value={pagesTotal}
               required
               placeholder="..."
               onChange={inputChange}
