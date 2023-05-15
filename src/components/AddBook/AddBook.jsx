@@ -35,7 +35,6 @@ export const AddBook = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     await addNewBook({ title, author, publishYear, pagesTotal })
       .unwrap()
       .then(() => {
