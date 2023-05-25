@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useGetAllUserBooksQuery } from "../../../redux/slices/bookApi";
+import { useGetAllUserBooksQuery, useGetCurrentPlanningQuery, useStartPlanningMutation } from "../../../redux/slices/bookApi";
 import Select from "react-select";
+import { AddPages } from "../AddPages/AddPages";
 
 export const MyTraining = () => {
   const {
@@ -10,6 +11,16 @@ export const MyTraining = () => {
     // isError,
     // error,
   } = useGetAllUserBooksQuery();
+
+  const {
+    data: { planning } = [],
+    // isLoading,
+    isSuccess,
+    // isError,
+    // error,
+  } = useGetCurrentPlanningQuery();
+
+  const [startTraining] = useStartPlanningMutation();
 
   const renderLabel = () => {
     const rendering = [];
@@ -57,6 +68,9 @@ export const MyTraining = () => {
       return trainingBooks;
     });
     console.log(startDate, stopDate, trainingBooks);
+    console.log(startDate, stopDate, trainingBooks);
+    resetForm();
+    console.log(startDate, stopDate, trainingBooks); 
     resetForm();
   };
 
@@ -72,10 +86,26 @@ export const MyTraining = () => {
     console.log(trainingBooks.map((b)=> console.log("del" , b, id ) ))
   }
 
+  const handleSubmitStartPlanning = async (e) => {
+    e.preventDefault();
+    await startTraining({startDate: startDate, endDate: stopDate, books: trainingBooks})
+       
+    resetForm();
+  }
+
   return (
     <>
       <p>My Training</p>
-      <form>
+      <div>
+        Contdown
+        {planning &&
+          <div>
+            <p>Start date: {planning.startDate}</p>
+            <p>Start date: {planning.endDate}</p>
+          </div>           
+          }
+      </div>
+      <form onSubmit={handleSubmitStartPlanning}>
         <input
           type="text"
           onFocus={(e) => (e.target.type = "date")}
@@ -108,7 +138,21 @@ export const MyTraining = () => {
           Add book
         </button>
         <div>{selectBook && <>You've selected {selectBook.value}</>}</div>
+        <button type="submit">Start planning</button>
+      
       </form>
+      <div>
+        BOOKS
+        {isSuccess && planning.books?.map(({ _id, title, pagesTotal, pagesFinished }) => (
+          <p key={_id}>
+            title: {title}
+            totalPages: {pagesTotal}
+            finishedPages: {pagesFinished}
+          </p>
+        ))}
+      </div>
+      <AddPages />
+      {/* <p>{goingToRead}</p> */}
     </>
   );
 };
