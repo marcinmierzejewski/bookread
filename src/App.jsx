@@ -9,6 +9,7 @@ import "./App.css";
 
 const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
 const LandingPage = lazy(() => import('./pages/LandingPage/LandingPage'));
+const Training = lazy(() => import('./pages/Training/Training'));
 
 export const App = () => {
   return (
@@ -16,6 +17,7 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route element={<PrivateRoute />}>
             <Route index element={<Dashboard />} />
+            <Route path="training" element={<Training />} />
           </Route>
           <Route element={<PublicRoute />}>
             <Route path="landing" element={<LandingPage />} /> 

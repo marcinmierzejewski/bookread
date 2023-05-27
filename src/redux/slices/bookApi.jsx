@@ -71,6 +71,26 @@ export const bookApi = createApi({
     getAllUserBooks: builder.query({
       query: () => "/user/books",
       providesTags: ["Auth", "Books"],
+    }),    
+    startPlanning: builder.mutation({
+      query: (planningData) => ({
+        url: "/planning",
+        method: "POST",
+        body: planningData,
+      }),
+      invalidatesTags: ["Auth", "Books"],
+    }),
+    getCurrentPlanning: builder.query({
+      query: () => "/planning",
+      providesTags: ["Auth", "Books"],
+    }),
+    addPages: builder.mutation({
+      query: (pages) => ({
+        url: `/planning`,
+        method: "PATCH",
+        body: pages,
+      }),
+      invalidatesTags: ["Auth", "Books"],
     }),
     // completeCard: builder.mutation({
     //   query: (id) => ({
@@ -92,4 +112,7 @@ export const {
 	useDeleteBookMutation,
 	useGetAllUserBooksQuery,
 	// useCompleteCardMutation,
+  useStartPlanningMutation,
+  useGetCurrentPlanningQuery,
+  useAddPagesMutation,
 } = bookApi;
