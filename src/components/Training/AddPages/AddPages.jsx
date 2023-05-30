@@ -7,7 +7,7 @@ export const AddPages = () => {
 
   const inputChange = (e) => {
     const { value } = e.target;
-    setPages(value);
+    setPages(Number(value));
   };
 
   const handleAddPages = async (e) => {

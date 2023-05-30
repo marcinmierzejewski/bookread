@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useGetAllUserBooksQuery, useGetCurrentPlanningQuery, useStartPlanningMutation } from "../../../redux/slices/bookApi";
 import Select from "react-select";
 import { AddPages } from "../AddPages/AddPages";
+import { Goals } from "../Goals/Goals";
+
+import { TrainingTitle } from "./MyTraining.styled";
 
 export const MyTraining = () => {
   const {
@@ -32,8 +35,8 @@ export const MyTraining = () => {
     return rendering;
   };
 
-  const [startDate, setStartDate] = useState("");
-  const [stopDate, setStopDate] = useState("");
+  const [startDate, setStartDate] = useState(0);
+  const [stopDate, setStopDate] = useState(0);
   const [trainingBooks, setTrainingBooks] = useState([]);
   const [selectBook, setSelectBook] = useState("");
 
@@ -95,10 +98,11 @@ export const MyTraining = () => {
 
   return (
     <>
-      <p>My Training</p>
+      <Goals trainingBooks={trainingBooks} planning={planning} startDate={startDate} endDate={stopDate}/>
+      <TrainingTitle>My Training</TrainingTitle>
       <div>
         Contdown
-        {planning &&
+        {isSuccess && planning &&
           <div>
             <p>Start date: {planning.startDate}</p>
             <p>Start date: {planning.endDate}</p>
