@@ -1,12 +1,22 @@
 import { GoalsWrapper, GoalsTitle, GoalsContent } from "./Goals.styled";
 
 export const Goals = ({ trainingBooks, startDate, endDate, planning }) => {
- 
   const amountOfDays = (startDate, endDate) => {
+    const currentData = new Date().getTime();
     const start = new Date(startDate).getTime();
     const end = new Date(endDate).getTime();
-    const days = end / 1000 / 3600 / 24 - start / 1000 / 3600 / 24;
-    return days;
+    const witchBigger = () => {
+      if (currentData >= start) {
+        return currentData;
+      }
+      return start;
+    };
+    const days = end / 1000 / 3600 / 24 - witchBigger() / 1000 / 3600 / 24;
+    console.log(typeof days);
+    if (typeof days === "number" && !isNaN(days)) {
+      return Math.round(days);
+    }
+    return 0;
   };
 
   return (

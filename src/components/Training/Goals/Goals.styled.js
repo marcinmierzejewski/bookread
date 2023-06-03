@@ -48,7 +48,9 @@ export const GoalsContent = styled.ul`
     }
 
     > span {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 100px;
       padding: 31px 37px;
       background: #f5f7fa;

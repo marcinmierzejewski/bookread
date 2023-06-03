@@ -119,7 +119,7 @@ export const BooksList = () => {
         </BooksListBox>
       )}
 
-      {isError && (
+      {isError && (logoutUser() ||
         <p>
           {" "}
           Error: <button onClick={logoutUser}> Logout </button>{" "}

@@ -1,10 +1,15 @@
 import { useState } from "react";
-import { useGetAllUserBooksQuery, useGetCurrentPlanningQuery, useStartPlanningMutation } from "../../../redux/slices/bookApi";
+import {
+  useGetAllUserBooksQuery,
+  useGetCurrentPlanningQuery,
+  useStartPlanningMutation,
+} from "../../../redux/slices/bookApi";
 import Select from "react-select";
 import { AddPages } from "../AddPages/AddPages";
 import { Goals } from "../Goals/Goals";
+import { BsCalendar4Week } from "react-icons/bs";
 
-import { TrainingTitle } from "./MyTraining.styled";
+import { TrainingTitle, TrainingForm } from "./MyTraining.styled";
 
 export const MyTraining = () => {
   const {
@@ -35,8 +40,8 @@ export const MyTraining = () => {
     return rendering;
   };
 
-  const [startDate, setStartDate] = useState(0);
-  const [stopDate, setStopDate] = useState(0);
+  const [startDate, setStartDate] = useState("Start");
+  const [stopDate, setStopDate] = useState("Finish");
   const [trainingBooks, setTrainingBooks] = useState([]);
   const [selectBook, setSelectBook] = useState("");
 
@@ -70,11 +75,6 @@ export const MyTraining = () => {
       }
       return trainingBooks;
     });
-    console.log(startDate, stopDate, trainingBooks);
-    console.log(startDate, stopDate, trainingBooks);
-    resetForm();
-    console.log(startDate, stopDate, trainingBooks); 
-    resetForm();
   };
 
   const viewTrainingBook = goingToRead?.filter((b) =>
@@ -82,78 +82,108 @@ export const MyTraining = () => {
   );
 
   const deleteAddBook = (id) => {
-    console.log(trainingBooks)
+    console.log(trainingBooks);
 
-    console.log("Delete")
-    setTrainingBooks(() => trainingBooks.filter((bk) => bk !== id))
-    console.log(trainingBooks.map((b)=> console.log("del" , b, id ) ))
-  }
+    console.log("Delete");
+    setTrainingBooks(() => trainingBooks.filter((bk) => bk !== id));
+    console.log(trainingBooks.map((b) => console.log("del", b, id)));
+  };
 
   const handleSubmitStartPlanning = async (e) => {
     e.preventDefault();
-    await startTraining({startDate: startDate, endDate: stopDate, books: trainingBooks})
-       
+    await startTraining({
+      startDate: startDate,
+      endDate: stopDate,
+      books: trainingBooks,
+    });
+
     resetForm();
-  }
+  };
 
   return (
     <>
-      <Goals trainingBooks={trainingBooks} planning={planning} startDate={startDate} endDate={stopDate}/>
-      <TrainingTitle>My Training</TrainingTitle>
       <div>
         Contdown
-        {isSuccess && planning &&
+        {isSuccess && planning && (
           <div>
             <p>Start date: {planning.startDate}</p>
             <p>Start date: {planning.endDate}</p>
-          </div>           
-          }
+          </div>
+        )}
       </div>
-      <form onSubmit={handleSubmitStartPlanning}>
-        <input
-          type="text"
-          onFocus={(e) => (e.target.type = "date")}
-          onBlur={(e) => (e.target.type = "text")}
-          name="start"
-          value={startDate}
-          required
-          placeholder="Start"
-          onChange={inputChange}
-        />
-        <input
-          type="text"
-          onFocus={(e) => (e.target.type = "date")}
-          onBlur={(e) => (e.target.type = "text")}
-          name="stop"
-          value={stopDate}
-          required
-          placeholder="Finish"
-          onChange={inputChange}
-        />
-        <Select options={renderLabel()} onChange={handleSelectedBook} />
+      <Goals
+        trainingBooks={trainingBooks}
+        planning={planning}
+        startDate={startDate}
+        endDate={stopDate}
+      />
+      <TrainingTitle>My Training</TrainingTitle>
+
+      <TrainingForm onSubmit={handleSubmitStartPlanning}>
         <div>
-          {viewTrainingBook?.map(({ _id, title, author }) => (
-            <li key={_id}>
-              {title} {author} <button type="button" onClick={() => deleteAddBook(_id)}>delete</button>
-            </li>
-          ))}
+          <div>
+            <input
+              type="text"
+              onFocus={(e) => (e.target.type = "date")}
+              onBlur={(e) => (e.target.type = "text")}
+              name="start"
+              value={startDate}
+              required
+              placeholder="Start"
+              onChange={inputChange}
+            />
+            <span>
+              <BsCalendar4Week />
+            </span>
+          </div>
+          <div>
+            <input
+              type="text"
+              onFocus={(e) => (e.target.type = "date")}
+              onBlur={(e) => (e.target.type = "text")}
+              name="stop"
+              value={stopDate}
+              required
+              placeholder="Finish"
+              onChange={inputChange}
+            />
+            <span>
+              <BsCalendar4Week />
+            </span>
+          </div>
         </div>
-        <button type="submit" onClick={handleAddBooksToTraining}>
-          Add book
-        </button>
+
+        <div>
+          <Select options={renderLabel()} onChange={handleSelectedBook} />
+          <div>
+            {viewTrainingBook?.map(({ _id, title, author }) => (
+              <li key={_id}>
+                {title} {author}{" "}
+                <button type="button" onClick={() => deleteAddBook(_id)}>
+                  delete
+                </button>
+              </li>
+            ))}
+          </div>
+          <button type="submit" onClick={handleAddBooksToTraining}>
+            Add book
+          </button>
+        </div>
         <div>{selectBook && <>You've selected {selectBook.value}</>}</div>
-        <button type="submit">Start planning</button>
-      
-      </form>
+        {viewTrainingBook?.length > 0 && (
+          <button type="submit">Start planning</button>
+        )}
+      </TrainingForm>
       <div>
         BOOKS
-        {isSuccess && planning.books?.map(({ _id, title, pagesTotal, pagesFinished }) => (
-          <p key={_id}>
-            title: {title}
-            totalPages: {pagesTotal}
-            finishedPages: {pagesFinished}
-          </p>
-        ))}
+        {isSuccess &&
+          planning.books?.map(({ _id, title, pagesTotal, pagesFinished }) => (
+            <p key={_id}>
+              title: {title}
+              totalPages: {pagesTotal}
+              finishedPages: {pagesFinished}
+            </p>
+          ))}
       </div>
       <AddPages />
       {/* <p>{goingToRead}</p> */}
