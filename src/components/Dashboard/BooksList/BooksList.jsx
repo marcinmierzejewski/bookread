@@ -119,7 +119,7 @@ export const BooksList = () => {
         </BooksListBox>
       )}
 
-      {isError && (logoutUser() ||
+      {isError && (
         <p>
           {" "}
           Error: <button onClick={logoutUser}> Logout </button>{" "}
@@ -129,8 +129,7 @@ export const BooksList = () => {
         !isError &&
         goingToRead?.length === 0 &&
         currentlyReading?.length === 0 &&
-        finishedReading?.length === 0 && 
-        <p> No contacts available </p>}
+        finishedReading?.length === 0 && <p> No contacts available </p>}
     </div>
   );
 };

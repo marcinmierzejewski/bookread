@@ -38,7 +38,7 @@ export const TrainingForm = styled.form`
         outline: none;
         transition: 250ms;
         &:focus {
-        border: 1px solid var(--color-accent);
+          border: 1px solid var(--color-accent);
         }
       }
 
@@ -46,16 +46,52 @@ export const TrainingForm = styled.form`
         position: absolute;
         top: 16.5px;
         left: 13px;
-         > svg {
+        > svg {
           color: rgba(166, 171, 185, 1);
           width: 17px;
           height: 17px;
-         }
+        }
       }
     }
 
     > div:first-child {
-      margin-right: 45px;
+      @media screen and (max-width: 545px) {
+        margin-bottom: 10px;
+      }
+      @media screen and (min-width: 600px) {
+        margin-right: 45px;
+      }
     }
+  }
+`;
+
+export const AddTrainingBooks = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const SelectedBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+  }
+
+  > div {
+    width: 100%;
+    margin: 20px;
+  }
+
+  > button {
+    width: 171px;
+    height: 38px;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #000000;
   }
 `;

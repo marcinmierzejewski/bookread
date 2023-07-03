@@ -8,8 +8,9 @@ import Select from "react-select";
 import { AddPages } from "../AddPages/AddPages";
 import { Goals } from "../Goals/Goals";
 import { BsCalendar4Week } from "react-icons/bs";
+import { TrainingBookList } from "../TrainingBookList/TrainingBookList";
 
-import { TrainingTitle, TrainingForm } from "./MyTraining.styled";
+import { TrainingTitle, TrainingForm, AddTrainingBooks, SelectedBox} from "./MyTraining.styled";
 
 export const MyTraining = () => {
   const {
@@ -153,22 +154,28 @@ export const MyTraining = () => {
           </div>
         </div>
 
-        <div>
-          <Select options={renderLabel()} onChange={handleSelectedBook} />
+        <AddTrainingBooks>
+          <SelectedBox>
+            <Select options={renderLabel()} onChange={handleSelectedBook} />
+            <button type="submit" onClick={handleAddBooksToTraining}>
+              Add
+            </button>
+          </SelectedBox>
           <div>
-            {viewTrainingBook?.map(({ _id, title, author }) => (
+            {/* {viewTrainingBook?.map(({ _id, title, author }) => (
               <li key={_id}>
                 {title} {author}{" "}
                 <button type="button" onClick={() => deleteAddBook(_id)}>
                   delete
                 </button>
               </li>
-            ))}
+            ))} */}
+            <TrainingBookList
+              viewTrainingBook={viewTrainingBook}
+              deleteAddBook={deleteAddBook}
+            />
           </div>
-          <button type="submit" onClick={handleAddBooksToTraining}>
-            Add book
-          </button>
-        </div>
+        </AddTrainingBooks>
         <div>{selectBook && <>You've selected {selectBook.value}</>}</div>
         {viewTrainingBook?.length > 0 && (
           <button type="submit">Start planning</button>
